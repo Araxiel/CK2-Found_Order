@@ -1,0 +1,22 @@
+d_custom_holy_order_1 = {
+
+	color={ 255 130 0 }
+
+	graphical_culture = holygfx
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 1 # (Must be an integer between 1 and 512)
+
+	mercenary_type = breton_band_composition
+}
