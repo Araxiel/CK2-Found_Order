@@ -1,0 +1,127 @@
+namespace = fo_knightly
+
+## fo_knightly.1000   # Found Knightly Order
+character_event  = {
+  id = fo_knightly.1000
+
+  title = fo_knightly.1000.title
+  desc = fo_knightly.1000.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+
+  is_triggered_only = yes
+
+  option = {
+    name = fo_knightly.1000.a
+
+    ## create directly ; moving to event later
+    custom_tooltip = {
+      text = found_holy_order_tt
+
+      create_title = {
+        tier = COUNT
+        landless = yes
+        temporary = no
+        custom_created = yes
+        culture = Root
+        holder = Root
+        base_title = capital_scope
+        short_name = yes
+        copy_title_laws = yes
+        holy_order = yes
+        mercenary = yes
+        army_template = breton_band_composition
+        siphons_income_to_creator = 0.1
+      }
+      new_title = {
+        save_event_target_as = new_holy_order
+        set_title_flag = is_founded_holy_order
+        random_list = {
+          1 = {
+            trigger = {
+              ROOT = {
+                NOR = {
+                  religion_group = christian
+                  religion_group = jewish_group
+                  religion_group = zoroastrian_group
+                }
+              }
+            }
+            set_name = FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS
+          }
+          1 = {
+            trigger = {
+              ROOT = {
+                OR = {
+                  religion_group = christian
+                  religion_group = jewish_group
+                  religion_group = zoroastrian_group
+                }
+              }
+            }
+            set_name = FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS
+          }
+        }
+      }
+
+      create_random_soldier = {
+        random_traits = yes
+        dynasty = random
+        culture = ROOT
+        religion = ROOT
+        age = 28
+      }
+      new_character = {
+        save_event_target_as = grandmaster_of_new_holy_order
+        set_government_type = order_government
+        add_trait = shrewd
+        add_trait = zealous
+        add_trait = diligent
+        add_trait = inspiring_leader
+        add_trait = organizer
+        if = {
+          limit = {
+            NOT = {
+              trait = brilliant_strategist
+            }
+          }
+          remove_trait = misguided_warrior
+          remove_trait = tough_soldier
+          remove_trait = skilled_tactician
+          add_trait = brilliant_strategist
+        }
+        grant_title_no_opinion = event_target:new_holy_order
+        set_defacto_liege = ROOT
+
+        opinion = {
+          name = opinion_formed_order
+          who = ROOT
+          years = 35
+        }
+
+        primary_title = {
+          holy_order_set_law_effect = yes
+        }
+
+        create_random_steward = {
+          random_traits = yes
+          dynasty = random
+        }
+        create_random_priest = {
+          random_traits = yes
+          dynasty = random
+        }
+        create_random_soldier = {
+          random_traits = yes
+          dynasty = random
+        }
+        create_random_soldier = {
+          random_traits = yes
+          dynasty = random
+        }
+      }
+
+    }
+  }
+}

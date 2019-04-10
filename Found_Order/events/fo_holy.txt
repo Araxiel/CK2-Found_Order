@@ -1,11 +1,11 @@
-namespace = fo_founding
+namespace = fo_holy
 
-## fo_founding.1000   # Founding
+## fo_holy.1000   # Found Knightly Order
 character_event  = {
-  id = fo_founding.1000
+  id = fo_holy.1000
 
-  title = fo_founding.1000.title
-  desc = fo_founding.1000.desc
+  title = fo_holy.1000.title
+  desc = fo_holy.1000.desc
   picture = GFX_evt_diplomat_hf
 
   only_rulers = yes
@@ -13,11 +13,12 @@ character_event  = {
   is_triggered_only = yes
 
   option = {
-    name = fo_founding.1000.a
+    name = fo_holy.1000.a
 
-    ## create directly ; moving to event later
     custom_tooltip = {
       text = found_holy_order_tt
+
+      
 
       create_title = {
         tier = COUNT
@@ -124,5 +125,4 @@ character_event  = {
 
     }
   }
-
 }
