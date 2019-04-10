@@ -1,0 +1,71 @@
+decisions = {
+
+  found_holy_order = {
+
+    only_playable = yes
+    is_high_prio = yes
+
+    #probability calc: 1 - ( ( 1 - {ai_factor} ) ^ {months} ) = x
+    ai_will_do = {
+      factor = 0
+    }
+
+    potential = {
+      is_feudal = yes
+      is_adult = yes
+      NOT = { has_character_flag = has_founded_holy_order }
+      higher_real_tier_than = DUKE
+      OR = {
+        independent = yes
+        has_game_rule = { name = fo_independence_rule value = vassal_can_found_order }
+      }
+      OR = {
+        is_reformed_religion = yes
+        religion_group = christian
+        religion_group = muslim
+        religion_group = jewish_group
+        religion_group = zoroastrian_group
+        religion_group = indian_group
+        religion_scope = {
+          has_flag = is_organized_religion
+        }
+      }
+      NOT = { has_religion_feature = religion_peaceful }
+      OR = {
+        has_global_flag = generic_crusades_unlocked # custom flag
+        has_global_flag = christian_crusades_unlocked # Prevent Army from being created at start
+        has_global_flag = pagan_ghws_unlocked
+        has_global_flag = muslim_jihads_unlocked
+      }
+    }
+
+    allow = {
+      piety = 500
+      scaled_wealth = { value = 0.25 min = 500 max = 1000 }
+      is_heretic = no
+      NOT = { trait = excommunicated }
+      ## move this to potential after test
+      NOT = {
+        any_realm_lord = {
+          has_flag = is_founded_holy_order
+        }
+      }
+      NOT = { trait = incapable }
+      prisoner = no
+      NOT = { is_inaccessible_trigger = yes }
+    }
+
+    effect = {
+
+      scaled_wealth = { value = -0.25 min = -500 max = -1000 }
+      piety = -500
+
+      character_event = { id = fo_founding.1000 tooltip = found_holy_order_tt }
+
+			sound_effect = generic_click_01
+
+      log = "Found Holy Order: ----> [Root.GetBestName] -> Founded Order"
+    }
+  }
+
+}

@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------------------------------------------------------------
+These are some of the useful scripted effects and triggers that are used throughout the mod:
+
+----
+Flags:
+--
+is_organized_religion
+- alternative check for custom religions that denotes it being "organized" enough for holy orders to be founded. Just add this flag with "set_flag = is_organized_religion" in the religion's scope.
+  example: religion_scope = { has_flag = is_organized_religion }
+generic_crusades_unlocked
+- alternative check for custom world to denote when crusades begin to be unlocked.
+
+----
+Triggers:
+--
+is_any_bad_priest
+  - checks if any type of wicked priest
+eldritch_ai_initiative_restricted
+  - shortcut to check if gamerule AI Initiative is set to restricted
+eldritch_ai_initiative_increased
+  - shortcut to check if gamerule AI Initiative is set to increased
+
+----
+Effects:
+--
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Common entities
+
+Religion:
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Overwrites

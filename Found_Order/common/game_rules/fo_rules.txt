@@ -1,0 +1,14 @@
+fo_independence_rule = {
+	name = "fo_independence"
+	group = "RULE_GROUP_FHO"
+	option = {
+		name = default
+		text = "RULE_OPTION_DEFAULT"
+		desc = "fo_independence_independent_only"
+	}
+	option = {
+		name = vassal_can_found_order
+		text = "RULE_OPTION_UNRESTRICTED"
+		desc = "fo_independence_vassals_allowed"
+	}
+}

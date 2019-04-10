@@ -1,0 +1,20 @@
+#CODE;ENGLISH;FRENCH;GERMAN;SPANISH
+
+## Misc;;;;;;;
+
+RULE_GROUP_FHO;Found Holy Order;;;;;;
+fo_independence;Found Holy Order: Ruler Independence;;;;;;
+fo_independence_vassals_allowed;You do not need to be independent to found a holy order;;;;;;
+fo_independence_independent_only;You  need to be independent to found a holy order;;;;;;
+
+## Founding;;;;;;;
+
+found_holy_order;Found Holy Order;;;;;;
+found_holy_order_desc;Found a Holy Order;;;;;;
+found_holy_order_tt;Found Holy Order;;;;;;
+FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS;Warriors of [Root.Capital.County.GetName];;;;;;
+FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS;Knights of [Root.Capital.County.GetName];;;;;;
+
+fo_founding.1000.title;Found Holy Order;;;;;;
+fo_founding.1000.desc;desc TODO;;;;;;
+fo_founding.1000.a;option TODO;;;;;;
