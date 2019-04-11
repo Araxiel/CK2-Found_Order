@@ -655,6 +655,164 @@ character_event = {
 
 }
 
+## fo_holy.7000   # Decision: Grant Independence
+character_event = {
+  id = fo_holy.7000
+
+  title = fo_holy.7000.title
+  desc = fo_holy.7000.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+  is_triggered_only = yes
+
+  immediate = {
+    random_realm_title  = {
+      limit = { has_flag = is_founded_holy_order }
+      save_event_target_as = freed_holy_order
+    }
+  }
+
+  option = {
+    name = fo_holy.7000.a
+
+    event_target:freed_holy_order = {
+      set_defacto_liege = THIS
+    }
+  }
+}
+
+## TODO make it general and also for knightly?
+## fo_holy.50000   # AI Event; Grow in size
+character_event = {
+  id = fo_holy.50000
+
+  ai  = yes
+  min_age = 16
+	capable_only = yes
+	prisoner = no
+
+  hide_window = yes
+
+  mean_time_to_happen = {
+    years = 5
+  }
+
+  trigger = {
+    primary_title = {
+      has_flag = is_founded_holy_order
+    }
+    government = order_government
+    wealth = 250
+    NOT = { has_character_modifier = is_order_recently_increased_in_size }
+  }
+
+  immediate = {
+    add_character_modifier = { name = is_order_recently_increased_in_size years = 4 hidden = yes }
+    wealth = -250
+    primary_title = {
+      change_title_army_size = 0.25
+    }
+    log = "Holy Order: ----> [Root.GetName] Increased the size of [Root.PrimaryTitle.GetName]"
+    liege = { character_event = { id = fo_holy.50001 } }
+  }
+}
+## fo_holy.50001   # AI Event; Grow in size; Notification for liege
+character_event = {
+  id = fo_holy.50001
+  desc = fo_holy.50001.desc
+  picture = GFX_evt_large_army
+
+  is_triggered_only = yes
+
+  notification = yes
+
+  immediate = {
+    prestige = 10
+  }
+
+  option = {
+    name = "EVTOPTA20410"
+  }
+}
+
+## fo_holy.50010   # AI Event; Random Donation
+character_event = {
+  id = fo_holy.50010
+
+  ai  = yes
+  min_age = 16
+	capable_only = yes
+	prisoner = no
+
+  hide_window = yes
+
+  mean_time_to_happen = {
+    years = 5
+    modifier = {
+      factor = 0.5
+      primary_title = { has_flag = ho_duty_common_folk }
+    }
+  }
+
+  trigger = {
+    primary_title = {
+      has_flag = is_founded_holy_order
+    }
+    government = order_government
+    NOT = { has_character_modifier = is_order_recently_gained_donation }
+  }
+
+  immediate = {
+    add_character_modifier = { name = is_order_recently_gained_donation years = 3 hidden = yes }
+    random_list = {
+      3 = {
+        modifier = {
+          factor = 3
+          primary_title = { has_flag = ho_duty_common_folk }
+        }
+        wealth = 50
+        log = "Holy Order: ----> [Root.GetBestName] Got a random small donation."
+      }
+      2 = {
+        modifier = {
+          factor = 3
+          primary_title = { has_flag = ho_duty_lords }
+        }
+        wealth = 100
+        log = "Holy Order: ----> [Root.GetBestName] Got a random medium donation."
+      }
+      1 = {
+        modifier = {
+          factor = 3
+          primary_title = { has_flag = ho_duty_church }
+        }
+        wealth = 150
+        log = "Holy Order: ----> [Root.GetBestName] Got a random big donation."
+      }
+    }
+    liege = { character_event = { id = fo_holy.50011 } }
+  }
+}
+## fo_holy.50011   # AI Event; Random Donation; Notification for liege
+character_event = {
+  id = fo_holy.50011
+  desc = fo_holy.50011.desc
+  picture = GFX_evt_large_army
+
+  is_triggered_only = yes
+
+  notification = yes
+
+  immediate = {
+    prestige = 10
+  }
+
+  option = {
+    name = "EVTOPTA20410"
+  }
+}
+
 
 ##
 ##

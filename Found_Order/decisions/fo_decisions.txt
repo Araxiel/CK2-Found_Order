@@ -69,3 +69,174 @@ decisions = {
   }
 
 }
+
+targetted_decisions = {
+  donate_to_order = {
+
+    filter = all
+
+    from_potential = {
+      is_adult = yes
+      NOT = { trait = incapable }
+      prisoner = no
+      NOT = { is_inaccessible_trigger = yes }
+    }
+    potential = {
+      primary_title = {
+        has_flag = is_founded_holy_order
+      }
+      religion = FROM
+    }
+    allow = {
+      FROM = {
+        scaled_wealth = { value = 2 min = 100 max = 300 }
+        NOT = { has_character_modifier = recently_donated_to_order }
+      }
+    }
+    effect = {
+      FROM = {
+        transfer_scaled_wealth = { to = ROOT value = 2 min = 100 max = 300 }
+        prestige = 50
+        piety = 100
+        add_character_modifier = { name = recently_donated_to_order years = 5 hidden = yes }
+      }
+    }
+    ai_acceptance = {
+    	factor = 30
+    	additive_modifier = {
+    		value = -100
+    		is_foe = FROM
+    	}
+    	additive_modifier = {
+    		value = 50
+    		wealth < 50
+    	}
+    	additive_modifier = {
+    		value = 25
+    		trait = greedy
+    	}
+    	additive_modifier = {
+    		value = -50
+    		trait = content
+    	}
+    	additive_modifier = {
+    		value = -25
+    		trait = envious
+    	}
+    	additive_modifier = {
+    		value = -25
+    		trait = paranoid
+    	}
+    	additive_modifier = {
+    		value = -10
+    		trait = arbitrary
+    	}
+    	additive_modifier = {
+    		value = -10
+    		trait = stubborn
+    	}
+    	additive_modifier = {
+    		value = -100
+    		localisation_key = "REASON_WEALTH"
+    		wealth = 1000
+    	}
+    }
+  }
+  increase_size_of_order = {
+
+    filter = sub_realm
+
+    from_potential = {
+      is_adult = yes
+      NOT = { trait = incapable }
+      prisoner = no
+      NOT = { is_inaccessible_trigger = yes }
+    }
+    potential = {
+      primary_title = {
+        has_flag = is_founded_holy_order
+      }
+    }
+    allow = {
+      FROM = {
+        scaled_wealth = { value = 1.5 min = 50 max = 100 }
+        NOT = { has_character_modifier = recently_donated_to_order }
+      }
+    }
+    effect = {
+      FROM = {
+        transfer_scaled_wealth = { from = FROM to = ROOT value = 0.25 min = 12 max = 25 }
+        sound_effect = generic_click_01
+      }
+      primary_title = {
+        custom_tooltip = { text = increase_size_of_order.tt }
+        change_title_army_size = 0.3
+      }
+      FROM = { add_character_modifier = { name = recently_donated_to_order days = 5 hidden = yes } }
+    }
+    ai_acceptance = {
+    	factor = 30
+    	additive_modifier = {
+    		value = -100
+    		is_foe = FROM
+    	}
+    	additive_modifier = {
+    		value = -100
+    		FROM = { trait = excommunicated }
+    	}
+    	additive_modifier = {
+    		value = 50
+    		wealth < 50
+    	}
+    	additive_modifier = {
+    		value = 25
+    		trait = greedy
+    	}
+    	additive_modifier = {
+    		value = -50
+    		trait = content
+    	}
+    	additive_modifier = {
+    		value = -25
+    		trait = envious
+    	}
+    	additive_modifier = {
+    		value = -25
+    		trait = paranoid
+    	}
+    	additive_modifier = {
+    		value = -10
+    		trait = arbitrary
+    	}
+    	additive_modifier = {
+    		value = -10
+    		trait = stubborn
+    	}
+    }
+  }
+  grant_independence_holy_order = {
+
+    filter = sub_realm
+
+    from_potential = {
+      is_adult = yes
+      NOT = { trait = incapable }
+      prisoner = no
+      NOT = { is_inaccessible_trigger = yes }
+    }
+    potential = {
+      primary_title = {
+        has_flag = is_founded_holy_order
+      }
+    }
+    allow = {
+    }
+    effect = {
+      FROM = {
+        piety = 450
+        sound_effect = generic_click_01
+      }
+      set_defacto_liege = THIS
+    }
+  }
+}
