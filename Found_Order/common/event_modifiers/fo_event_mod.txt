@@ -1,0 +1,17 @@
+is_order_recently_increased_in_size = { icon = 1 }
+is_order_recently_gained_donation = { icon = 1 }
+recently_donated_to_order = { icon = 1 }
+
+fo_building_holding = {
+	icon = 29
+
+	monthly_character_wealth = -9
+	global_tax_modifier = -0.1
+	stewardship_penalty = -1
+}
+
+fo_building_castle_holding_province = {
+	icon = 29
+
+	local_tax_modifier = -0.1
+}

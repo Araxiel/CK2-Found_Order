@@ -12,117 +12,676 @@ character_event  = {
 
   is_triggered_only = yes
 
-  option = {
-    name = fo_holy.1000.a
+  immediate = {
+    set_character_flag = has_founded_holy_order
 
-    custom_tooltip = {
-      text = found_holy_order_tt
+    set_global_flag = founded_custom_holy_order
+    if = {
+      limit = { NOT = { is_title_active = d_custom_holy_order_1 } }
+      activate_title = { title = d_custom_holy_order_1 status = yes }
+      d_custom_holy_order_1 = { save_event_target_as = new_holy_order }
+      log = "Found Holy Order: ----> d_custom_holy_order_1"
+      set_global_flag = founded_ho_1
+    }
+    else_if = {
+      limit = { NOT = { is_title_active = d_custom_holy_order_2 } }
+      activate_title = { title = d_custom_holy_order_2 status = yes }
+      d_custom_holy_order_2 = { save_event_target_as = new_holy_order }
+      log = "Found Holy Order: ----> d_custom_holy_order_2"
+      set_global_flag = founded_ho_2
+    }
+    else_if = {
+      limit = { NOT = { is_title_active = d_custom_holy_order_3 } }
+      activate_title = { title = d_custom_holy_order_3 status = yes }
+      d_custom_holy_order_3 = { save_event_target_as = new_holy_order }
+      log = "Found Holy Order: ----> d_custom_holy_order_3"
+      set_global_flag = founded_ho_3
+    }
+    else_if = {
+      limit = { NOT = { is_title_active = d_custom_holy_order_4 } }
+      activate_title = { title = d_custom_holy_order_4 status = yes }
+      d_custom_holy_order_4 = { save_event_target_as = new_holy_order }
+      log = "Found Holy Order: ----> d_custom_holy_order_4"
+      set_global_flag = founded_ho_4
+    }
+    else = {
+      activate_title = { title = d_custom_holy_order_5 status = yes }
+      d_custom_holy_order_5 = { save_event_target_as = new_holy_order }
+      log = "Found Holy Order: ----> d_custom_holy_order_5"
+      set_global_flag = founded_ho_5
+    }
 
-      
+    log = "Found Holy Order: ----> [Root.GetBestName] -> Activated [new_holy_order.GetName]"
 
-      create_title = {
-        tier = COUNT
-        landless = yes
-        temporary = no
-        custom_created = yes
-        culture = Root
-        holder = Root
-        base_title = capital_scope
-        short_name = yes
-        copy_title_laws = yes
-        holy_order = yes
-        mercenary = yes
-        army_template = breton_band_composition
-        siphons_income_to_creator = 0.1
-      }
-      new_title = {
-        save_event_target_as = new_holy_order
-        set_title_flag = is_founded_holy_order
-        random_list = {
-          1 = {
-            trigger = {
-              ROOT = {
-                NOR = {
-                  religion_group = christian
-                  religion_group = jewish_group
-                  religion_group = zoroastrian_group
-                }
+    capital_holding = {
+      save_event_target_as = founder_capital
+    }
+
+    event_target:new_holy_order = {
+
+      culture = Root
+      # Audax Validator "." Ignore_ALL
+      set_order_graphical_culture = yes
+      religion = Root
+      set_preferred_capital = event_target:founder_capital
+      log = "Found Holy Order: ----> [new_holy_order.GetName] -> Capital Set As [founder_capital.GetName]"
+
+      # reference
+      set_title_flag = is_founded_holy_order
+      # name
+      set_short_name = yes
+      random_list = {
+        1 = {
+          trigger = {
+            ROOT = {
+              NOR = {
+                religion_group = christian
+                religion_group = jewish_group
+                religion_group = zoroastrian_group
               }
             }
-            set_name = FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS
           }
-          1 = {
-            trigger = {
-              ROOT = {
-                OR = {
-                  religion_group = christian
-                  religion_group = jewish_group
-                  religion_group = zoroastrian_group
-                }
+          set_name = FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS
+          adjective = FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS_ADJ
+        }
+        1 = {
+          trigger = {
+            ROOT = {
+              OR = {
+                religion_group = christian
+                religion_group = jewish_group
+                religion_group = zoroastrian_group
               }
             }
-            set_name = FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS
           }
+          set_name = FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS
+          adjective = FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS_ADJ
         }
       }
+      log = "Found Holy Order: ----> Order Auto-Renamed to [new_holy_order.GetName]"
+    }
 
+    create_random_soldier = {
+      random_traits = yes
+      dynasty = random
+      culture = ROOT
+      religion = ROOT
+      age = 28
+    }
+    new_character = {
+      make_new_character_female_if_feminist = yes
+      log = "Found Holy Order: ----> Grandmaster created named [This.GetBestName]"
+
+      save_event_target_as = grandmaster_of_new_holy_order
+      set_government_type = order_government
+      add_trait = shrewd
+      add_trait = zealous
+      add_trait = diligent
+      add_trait = inspiring_leader
+      add_trait = organizer
+      if = {
+        limit = {
+          NOT = {
+            trait = brilliant_strategist
+          }
+        }
+        remove_trait = misguided_warrior
+        remove_trait = tough_soldier
+        remove_trait = skilled_tactician
+        add_trait = brilliant_strategist
+      }
+      grant_title_no_opinion = event_target:new_holy_order
+      ## vassalize the order
+      set_defacto_liege = ROOT
+
+      opinion = {
+        modifier = opinion_formed_order
+        who = ROOT
+        years = 35
+      }
+
+      primary_title = {
+        holy_order_set_law_effect = yes
+      }
+
+      create_random_steward = {
+        random_traits = yes
+        dynasty = random
+      }
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+      create_random_priest = {
+        random_traits = yes
+        dynasty = random
+      }
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
       create_random_soldier = {
         random_traits = yes
         dynasty = random
-        culture = ROOT
-        religion = ROOT
-        age = 28
       }
       new_character = {
-        save_event_target_as = grandmaster_of_new_holy_order
-        set_government_type = order_government
-        add_trait = shrewd
-        add_trait = zealous
-        add_trait = diligent
-        add_trait = inspiring_leader
-        add_trait = organizer
-        if = {
-          limit = {
-            NOT = {
-              trait = brilliant_strategist
-            }
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+      create_random_soldier = {
+        random_traits = yes
+        dynasty = random
+      }
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+      create_character = {
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 18
+			}
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 18
+			}
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+			create_character = {
+				random_traits = yes
+				dynasty = random
+				female = no
+				age = 20
+			}
+      new_character = {
+        # Audax Validator "." Ignore_ALL
+        make_new_character_female_if_feminist = yes
+      }
+      log = "Found Holy Order: ----> Created [This.GetBestName] and their court to lead [new_holy_order.GetName]"
+    }
+
+    #event_target:new_holy_order = {
+    #  prompt_name = {
+    #    player = ROOT
+    #    type = RENAME_WONDER_MESSAGE
+    #    portrait = event_target:grandmaster_of_new_holy_order
+    #  }
+    #  log = "Found Holy Order: ----> Order Renamed to [new_holy_order.GetName]"
+    #}
+  }
+
+  option = {
+    name = fo_holy.1000.a
+    event_target:grandmaster_of_new_holy_order = {
+      opinion = { modifier = fo_founder_of_the_order who = ROOT years = 50 }
+    }
+    character_event = { id = fo_holy.1010 tooltip = found_holy_order_choices_tt days = 10 }
+  }
+}
+
+
+## fo_holy.1010   # Composition
+character_event = {
+  id = fo_holy.1010
+
+  title = fo_holy.1000.title
+  desc = fo_holy.1010.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+  is_triggered_only = yes
+
+  # keep them basic
+  option = {
+    name = fo_holy.1010.a
+    event_target:new_holy_order = {
+      custom_tooltip = { text = fo_holy.1010.a.tt }
+    }
+  }
+
+  # heavy infantry
+  option = {
+    name = fo_holy.1010.b
+
+    scaled_wealth = { value = -0.1 min = -50 max = -200 }
+    event_target:new_holy_order = {
+      change_mercenary_composition = {
+        from = light_infantry
+        change = 100
+        type = heavy_infantry
+      }
+      change_title_army_size = -0.2
+      custom_tooltip = { text = fo_holy.1010.b.tt }
+    }
+  }
+
+  # heavy defensive infantry
+  option = {
+    name = fo_holy.1010.c
+
+    scaled_wealth = { value = -0.1 min = -75 max = -150 }
+    event_target:new_holy_order = {
+      change_mercenary_composition = { from = light_infantry type = pikemen change = 100 }
+      change_title_army_size = -0.15
+      custom_tooltip = { text = fo_holy.1010.c.tt }
+    }
+  }
+
+  # mobile
+  option = {
+    name = fo_holy.1010.d
+
+    scaled_wealth = { value = -0.25 min = -100 max = -250 }
+    event_target:new_holy_order = {
+      change_mercenary_composition = { from = heavy_infantry type = knights change = 50 }
+      change_mercenary_composition = { from = light_infantry type = light_cavalry change = 275 }
+      change_mercenary_composition = { from = archers type = light_cavalry change = 100 }
+      change_title_army_size = -0.7
+      custom_tooltip = { text = fo_holy.1010.d.tt }
+    }
+  }
+
+  after = {
+    event_target:new_holy_order = {
+      if = {
+        limit = {
+          ROOT = {
+            realm_size > 100
           }
-          remove_trait = misguided_warrior
-          remove_trait = tough_soldier
-          remove_trait = skilled_tactician
-          add_trait = brilliant_strategist
         }
-        grant_title_no_opinion = event_target:new_holy_order
-        set_defacto_liege = ROOT
+        change_title_army_size = 0.5
+        log = "Found Holy Order: ----> [new_holy_order.GetName] Army Size Increase Tier 1"
+      }
+      if = {
+        limit = {
+          ROOT = {
+            realm_size > 175
+          }
+        }
+        change_title_army_size = 0.5
+        log = "Found Holy Order: ----> [new_holy_order.GetName] Army Size Increase Tier 2"
+      }
+      if = {
+        limit = {
+          ROOT = {
+            realm_size > 250
+          }
+        }
+        change_title_army_size = 0.5
+        log = "Found Holy Order: ----> [new_holy_order.GetName] Army Size Increase Tier 3"
+      }
+      if = {
+        limit = {
+          ROOT = {
+            realm_size > 300
+          }
+        }
+        change_title_army_size = 0.5
+        log = "Found Holy Order: ----> [new_holy_order.GetName] Army Size Increase Tier 4"
+      }
+    }
+    hidden_tooltip = {
+      spawn_unit = {
+        owner = event_target:grandmaster_of_new_holy_order
+        province = event_target:founder_capital
+        home = ROOT
+        troops = {
+          light_infantry = { 200 200 }
+          heavy_infantry = { 100 100 }
+          archers = { 100 100 }
+          light_cavalry = { 20 20 }
+        }
+        attrition = 1.0
+        maintenance_multiplier = 0
+      }
+    }
+    character_event = { id = fo_holy.1020 days = 10 }
+  }
+}
 
-        opinion = {
-          name = opinion_formed_order
-          who = ROOT
-          years = 35
-        }
+## fo_holy.1020   # Duty
+character_event = {
+  id = fo_holy.1020
 
-        primary_title = {
-          holy_order_set_law_effect = yes
-        }
+  title = fo_holy.1000.title
+  desc = fo_holy.1020.desc
+  picture = GFX_evt_diplomat_hf
 
-        create_random_steward = {
-          random_traits = yes
-          dynasty = random
+  only_rulers = yes
+  is_triggered_only = yes
+
+  immediate = {
+    religion_head = {
+      any_demesne_title = {
+        limit = {
+          controls_religion = ROOT
         }
-        create_random_priest = {
-          random_traits = yes
-          dynasty = random
-        }
-        create_random_soldier = {
-          random_traits = yes
-          dynasty = random
-        }
-        create_random_soldier = {
-          random_traits = yes
-          dynasty = random
+        save_event_target_as = religious_head_title
+      }
+    }
+  }
+
+  # common folk
+  option = {
+    name = fo_holy.1020.a
+
+    event_target:new_holy_order = {
+      custom_tooltip = { text = fo_holy.1020.a.tt }
+      set_flag = ho_duty_common_folk
+    }
+    scaled_prestige = { value = 0.75 min = 50 max = 150 }
+    add_trait = kind
+  }
+
+  # the lords
+  option = {
+    name = fo_holy.1020.b
+
+    event_target:new_holy_order = {
+      custom_tooltip = { text = fo_holy.1020.b.tt }
+      set_flag = ho_duty_lords
+    }
+    change_diplomacy = 1
+    random_list = {
+      1 = {
+        add_trait = greedy
+      }
+      1 = {
+        add_trait = proud
+      }
+    }
+  }
+
+  # the realm
+  option = {
+    name = fo_holy.1020.c
+
+    event_target:new_holy_order = {
+      custom_tooltip = { text = fo_holy.1020.c.tt }
+      set_flag = ho_duty_realm
+    }
+    change_stewardship = 1
+  }
+
+  # the church
+  option = {
+    name = fo_holy.1020.d
+
+    trigger = {
+      NOT = {
+        religion_head = {
+          character = ROOT
         }
       }
-
     }
+
+    event_target:new_holy_order = {
+      custom_tooltip = { text = fo_holy.1020.d.tt }
+      set_flag = ho_duty_church
+    }
+    scaled_piety = { value = 2 min = 25 max = 100 }
+    add_trait = zealous
+  }
+
+  after = {
+    character_event = { id = fo_holy.1100 days = 10 }
+  }
+}
+
+## fo_holy.1100   # Ceremony
+character_event = {
+  id = fo_holy.1100
+
+  title = fo_holy.1000.title
+  desc = fo_holy.1100.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+  is_triggered_only = yes
+
+  # small formality
+  option = {
+    name = fo_holy.1100.a
+    prestige = 5
+    wealth = -5
+    transfer_scaled_wealth = { from = ROOT to = event_target:grandmaster_of_new_holy_order value = 0.05 min = 5 max = 20 }
+  }
+
+  # great feast
+  option = {
+    name = fo_holy.1100.b
+    prestige = 45
+    wealth = -25
+    transfer_scaled_wealth = { from = ROOT to = event_target:grandmaster_of_new_holy_order value = 0.3 min = 50 max = 150 }
+  }
+
+  # grand celebraton
+  option = {
+    name = fo_holy.1100.c
+    prestige = 125
+    piety = 25
+    wealth = -75
+    transfer_scaled_wealth = { from = ROOT to = event_target:grandmaster_of_new_holy_order value = 0.4 min = 150 max = 250 }
+  }
+
+  after = {
+    #character_event = { id = fo_holy.2001 days = 700 random = 100 } # wants a castle; roughly 2 years later
+    event_target:grandmaster_of_new_holy_order = { character_event = { id = fo_holy.2001 days = 20 random = 5 } } # wants a castle; roughly 20 days later - debug
+    clear_event_target = grandmaster_of_new_holy_order
+    clear_event_target = new_holy_order
+  }
+}
+
+## fo_holy.2000   # Grandmaster is asking for castle
+character_event = {
+  id = fo_holy.2000
+
+  hide_window = yes
+  only_rulers = yes
+  ai = yes
+
+  mean_time_to_happen = {
+    years = 30
+  }
+
+  trigger = {
+    government = order_government
+    primary_title = {
+      NOT = { has_flag = has_order_castle }
+      has_flag = is_founded_holy_order
+    }
+    NOT = { has_opinion_modifier = { who = liege  modifier = fo_refused_castle_request } }
+    liege = { NOT = { has_character_modifier = fo_building_holding } }
+  }
+
+  immediate = {
+    character_event = { id = fo_holy.2001 }
+  }
+
+}
+
+## fo_holy.2001   # Grandmaster ping
+character_event = {
+  id = fo_holy.2001
+
+  hide_window = yes
+  only_rulers = yes
+  is_triggered_only = yes
+
+
+  immediate = {
+    save_event_target_as = holy_order_castle_grandmaster
+    liege = { character_event = { id = fo_holy.2002 } }
+  }
+
+}
+
+## fo_holy.2002   # Grandmaster is asking for castle
+character_event = {
+  id = fo_holy.2002
+
+  title = fo_holy.2002.title
+  desc = fo_holy.2002.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+  is_triggered_only = yes
+
+  # I can't afford it
+  option = {
+    name = fo_holy.2002.a
+    prestige = -50
+    piety = -50
+    reverse_opinion = { modifier = fo_refused_castle_request who = FROM years = 15 }
+  }
+
+  # He shall have his castle
+  option = {
+    name = fo_holy.2002.b
+    wealth = -200 # total of -416
+    random_demesne_province = {
+      limit = {
+        NOT = { num_of_max_settlements = 7 }
+      }
+      preferred_limit = {
+        NOT = { distance = { who = ROOT value = 150 } }
+        num_of_settlements < 2
+      }
+      preferred_limit = {
+        NOT = { distance = { who = ROOT value = 150 } }
+        num_of_settlements < 3
+      }
+      preferred_limit = {
+        num_of_settlements < 2
+      }
+      preferred_limit = {
+        num_of_settlements < 3
+      }
+      add_province_modifier = { name = fo_building_castle_holding_province days = 30 }
+      save_event_target_as = fo_province_building_castle_holding
+    }
+    # add_character_modifier = { name = fo_building_holding years = 2 }  # amounts to -216 (not including stewardship penalties)
+    add_character_modifier = { name = fo_building_holding days = 30 }  # amounts to -216 (not including stewardship penalties)
+    character_event = { id = fo_holy.2003 days = 30 }
+  }
+
+}
+
+## fo_holy.2003   # castle done
+character_event = {
+  id = fo_holy.2003
+
+  title = fo_holy.2002.title
+  desc = fo_holy.2003.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+  is_triggered_only = yes
+
+  option = {
+    name = fo_holy.2003.a
+    prestige = 50
+    piety = 50
+    event_target:fo_province_building_castle_holding = {
+      custom_tooltip = {
+        text = fo_holy.2003.a.tt
+
+        add_holding_slot = 1
+        build_holding = { type = castle holder = FROMFROM }
+        change_variable = { which = prosperity_value value = 10 }
+      }
+    }
+    FROMFROM = {
+      opinion = { modifier = fo_fulfilled_castle_request who = ROOT years = 15 }
+      any_demesne_title = {
+        limit = { tier = baron }
+        save_event_target_as = order_barony
+      }
+      primary_title = {
+        random_list = {
+          1 = {
+            ## keep name
+          }
+          6 = { #rename
+            custom_tooltip = {
+              text = fo_holy.2003.a.tt.rename
+              random_list = {
+                1 = {
+                  trigger = {
+                    ROOT = {
+                      NOR = {
+                        religion_group = christian
+                        religion_group = jewish_group
+                        religion_group = zoroastrian_group
+                      }
+                    }
+                  }
+                  set_name = RENAME_LOCALE_HOLY_ORDER_CUSTOM_WARRIORS
+                  adjective = RENAME_LOCALE_HOLY_ORDER_CUSTOM_WARRIORS_ADJ
+                }
+                1 = {
+                  trigger = {
+                    ROOT = {
+                      OR = {
+                        religion_group = christian
+                        religion_group = jewish_group
+                        religion_group = zoroastrian_group
+                      }
+                    }
+                  }
+                  set_name = RENAME_LOCALE_HOLY_ORDER_CUSTOM_KNIGHTS
+                  adjective = RENAME_LOCALE_HOLY_ORDER_CUSTOM_KNIGHTS_ADJ
+                }
+              }
+            }
+            set_preferred_capital = event_target:fo_province_building_castle_holding
+            log = "Found Holy Order: ----> [FromFrom.GetName] moved their castle to [order_barony.GetName]"
+          }
+        }
+        change_title_army_size = 0.15
+        set_flag = has_order_castle
+      }
+    }
+  }
+
+}
+
+
+##
+##
+
+## fo_holy.1   # Debug: Deactivate all orders
+character_event = {
+  id = fo_holy.1
+
+  title = fo_holy.1.title
+  desc = fo_holy.1.desc
+  picture = GFX_evt_diplomat_hf
+
+  only_rulers = yes
+
+  mean_time_to_happen = {
+    years = 100
+  }
+
+  trigger = { always = no }
+
+  option = {
+    name = fo_holy.1.a
+
+    activate_title = { title = d_custom_holy_order_1 status = no }
+    activate_title = { title = d_custom_holy_order_2 status = no }
+    activate_title = { title = d_custom_holy_order_3 status = no }
+    activate_title = { title = d_custom_holy_order_4 status = no }
+    activate_title = { title = d_custom_holy_order_5 status = no }
   }
 }

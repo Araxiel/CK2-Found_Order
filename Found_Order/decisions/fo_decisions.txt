@@ -13,7 +13,7 @@ decisions = {
     potential = {
       is_feudal = yes
       is_adult = yes
-      NOT = { has_character_flag = has_founded_holy_order }
+      #NOT = { has_character_flag = has_founded_holy_order }  # temporary removal for debug reasons
       higher_real_tier_than = DUKE
       OR = {
         independent = yes
@@ -44,23 +44,23 @@ decisions = {
       scaled_wealth = { value = 0.25 min = 500 max = 1000 }
       is_heretic = no
       NOT = { trait = excommunicated }
+      NOT = { trait = incapable }
+      prisoner = no
+      NOT = { is_inaccessible_trigger = yes }
       ## move this to potential after test
       NOT = {
         any_realm_lord = {
           has_flag = is_founded_holy_order
         }
       }
-      NOT = { trait = incapable }
-      prisoner = no
-      NOT = { is_inaccessible_trigger = yes }
     }
 
     effect = {
-
       scaled_wealth = { value = -0.25 min = -500 max = -1000 }
       piety = -500
+      prestige = 150
 
-      character_event = { id = fo_founding.1000 tooltip = found_holy_order_tt }
+      character_event = { id = fo_holy.1000 tooltip = found_holy_order_tt }
 
 			sound_effect = generic_click_01
 
