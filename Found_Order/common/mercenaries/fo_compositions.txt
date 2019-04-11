@@ -1,0 +1,34 @@
+start_light_composition_one = {
+	levy_size = 1
+	light_infantry = 275
+	heavy_infantry = 50
+  archers = 100
+}
+
+start_light_composition_two = {
+	levy_size = 1
+	light_infantry = 275
+	heavy_infantry = 50
+  archers = 100
+}
+
+start_light_composition_three = {
+	levy_size = 1
+	light_infantry = 275
+	heavy_infantry = 50
+  archers = 100
+}
+
+start_light_composition_four = {
+	levy_size = 1
+	light_infantry = 275
+	heavy_infantry = 50
+  archers = 100
+}
+
+start_light_composition_five = {
+	levy_size = 1
+	light_infantry = 275
+	heavy_infantry = 50
+  archers = 100
+}
