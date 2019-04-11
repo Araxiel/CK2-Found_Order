@@ -225,6 +225,7 @@ targetted_decisions = {
       NOT = { is_inaccessible_trigger = yes }
     }
     potential = {
+      de_facto_liege = FROM
       primary_title = {
         has_flag = is_founded_holy_order
       }
