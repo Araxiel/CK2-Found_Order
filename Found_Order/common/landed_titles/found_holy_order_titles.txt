@@ -1,0 +1,115 @@
+d_custom_holy_order_1 = {
+
+  color={ 255 130 0 }
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+  mercenary = yes
+  short_name = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+
+	mercenary_type = start_light_composition_one
+  strength_growth_per_century = 0.1
+}
+
+d_custom_holy_order_2 = {
+
+	color={ 150 255 0 }
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+  short_name = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+
+	mercenary_type = start_light_composition_two
+  strength_growth_per_century = 0.1
+}
+
+d_custom_holy_order_3 = {
+
+	color={ 90 215 255 }
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+  short_name = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+
+	mercenary_type = start_light_composition_three
+  strength_growth_per_century = 0.1
+}
+
+d_custom_holy_order_4 = {
+
+	color={ 224 224  255 }
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+  short_name = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+
+	mercenary_type = start_light_composition_four
+  strength_growth_per_century = 0.1
+}
+
+d_custom_holy_order_5 = {
+
+	color={ 160 78 78 }
+
+	title = "GRANDMASTER"
+	foa = "GRANDMASTER_FOA"
+
+	# Always exists
+	landless = yes
+
+	holy_order = yes
+  short_name = yes
+
+	# Cannot be held as a secondary title
+	primary = yes
+
+	# Extra income due to donations, etc
+	monthly_income = 3 # (Must be an integer between 1 and 512)
+
+	mercenary_type = start_light_composition_five
+  strength_growth_per_century = 0.1
+}

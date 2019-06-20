@@ -1,0 +1,11 @@
+fo_refused_castle_request = {
+  opinion = -35
+}
+
+fo_fulfilled_castle_request = {
+  opinion = 50
+}
+
+fo_founder_of_the_order = {
+  opinion = 50
+}

@@ -1,0 +1,12 @@
+on_startup = {
+  effect = {
+    if = {
+      limit = { NOT = { has_global_flag = founded_custom_holy_order } }
+      activate_title = { title = d_custom_holy_order_1 status = no }
+      activate_title = { title = d_custom_holy_order_2 status = no }
+      activate_title = { title = d_custom_holy_order_3 status = no }
+      activate_title = { title = d_custom_holy_order_4 status = no }
+      activate_title = { title = d_custom_holy_order_5 status = no }
+    }
+  }
+}

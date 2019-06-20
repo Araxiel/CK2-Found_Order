@@ -2,19 +2,112 @@
 
 ## Misc;;;;;;;
 
-RULE_GROUP_FHO;Found Holy Order;;;;;;
-fo_independence;Found Holy Order: Ruler Independence;;;;;;
+RULE_GROUP_FHO;§KFound Holy Order§!;;;;;;
+fo_independence;§KFound Holy Order§!: Ruler Independence;;;;;;
 fo_independence_vassals_allowed;You do not need to be independent to found a holy order;;;;;;
 fo_independence_independent_only;You  need to be independent to found a holy order;;;;;;
 
-## Founding;;;;;;;
+## Holy Order;;;;;;;
+
+d_custom_holy_order_1;Holy Order One;;;;;;
+d_custom_holy_order_1_adj;Order;;;;;;
+d_custom_holy_order_2;Holy Order Two;;;;;;
+d_custom_holy_order_2_adj;Order;;;;;;
+d_custom_holy_order_3;Holy Order Three;;;;;;
+d_custom_holy_order_3_adj;Order;;;;;;
+d_custom_holy_order_4;Holy Order Four;;;;;;
+d_custom_holy_order_4_adj;Order;;;;;;
+d_custom_holy_order_5;Holy Order Five;;;;;;
+d_custom_holy_order_5_adj;Order;;;;;;
 
 found_holy_order;Found Holy Order;;;;;;
-found_holy_order_desc;Found a Holy Order;;;;;;
-found_holy_order_tt;Found Holy Order;;;;;;
+found_holy_order_desc;Found a new Holy Order and guide its early creation.;;;;;;
+found_holy_order_tt;Found a new Holy Order;;;;;;
 FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS;Warriors of [Root.Capital.County.GetName];;;;;;
+FOUNDED_HOLY_ORDER_CUSTOM_WARRIORS_ADJ;[Root.Capital.County.GetAdjective];;;;;;
 FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS;Knights of [Root.Capital.County.GetName];;;;;;
+FOUNDED_HOLY_ORDER_CUSTOM_KNIGHTS_ADJ;[Root.Capital.County.GetAdjective];;;;;;
 
-fo_founding.1000.title;Found Holy Order;;;;;;
-fo_founding.1000.desc;desc TODO;;;;;;
-fo_founding.1000.a;option TODO;;;;;;
+fo_holy.1000.title;Found Holy Order;;;;;;
+fo_holy.1000.desc;desc TODO;;;;;;
+fo_holy.1000.a;Let the enemies of [Root.Religion.GetFullName] tremble.;;;;;;
+fo_founder_of_the_order;Founder of the Order;;;;;;
+
+found_holy_order_choices_tt;Influence the Holy Order's duties and composition.;;;;;;
+fo_holy.1010.desc;desc TODO;;;;;;
+fo_holy.1010.a;Their faith is their shield.;;;;;;
+fo_holy.1010.a.tt;General mixed foot troops.;;;;;;
+fo_holy.1010.b;They shall be clad in heavy armour.;;;;;;
+fo_holy.1010.b.tt;Emphasis on heavy infantry.;;;;;;
+fo_holy.1010.c;They shall be my bulwark against our enemies.;;;;;;
+fo_holy.1010.c.tt;Defensive force with lots of pikemen.;;;;;;
+fo_holy.1010.d;They shall be swift.;;;;;;
+fo_holy.1010.d.tt;Small cavalry force.;;;;;;
+
+found_holy_order_duty_tt;Go on to influence their duties.;;;;;;
+fo_holy.1020.desc;desc TODO;;;;;;
+fo_holy.1020.a;Their duty is to the common folk.;;;;;;
+fo_holy.1020.a.tt;Good bonus?;;;;;;
+fo_holy.1020.b;Their duty is to the lords.;;;;;;
+fo_holy.1020.b.tt;Power Bonus?\nAllows Realm Lords to Borrow Money;;;;;;
+fo_holy.1020.c;Their duty is to the realm.;;;;;;
+fo_holy.1020.c.tt;Secular Bonus;;;;;;
+fo_holy.1020.d;Their duty is to the [religious_head_title.GetRulerTitle].;;;;;;
+fo_holy.1020.d.tt;Church Bonus;;;;;;
+
+found_holy_order_ceremony_tt;Go on to finalize the order in a ceremony.;;;;;;
+fo_holy.1100.desc;desc TODO;;;;;;
+fo_holy.1100.a;A small formality is enough.;;;;;;
+fo_holy.1100.b;Let the entire realm known there shall be a great feast.;;;;;;
+fo_holy.1100.c;Let every [Root.Religion.GetAdjective] known there shall be a grand celebration.;;;;;;
+
+fo_holy.2002.title;Build a Castle;;;;;;
+fo_holy.2002.desc;desc TODO;;;;;;
+fo_holy.2002.a;I can't afford this right now.;;;;;;
+fo_holy.2002.b;The [From.PrimaryTitle.GetName] shall have their castle.;;;;;;
+fo_refused_castle_request;Refused Request;;;;;;
+fo_fulfilled_castle_request;Fulfilled Castle Request;;;;;;
+fo_building_holding;Building Holding;;;;;;
+fo_building_castle_holding_province;Building Castle Holding;;;;;;
+fo_holy.2003.desc;desc TODO;;;;;;
+fo_holy.2003.a;A base from which to strike fear in the hearts of our enemies.;;;;;;
+fo_holy.2003.a.tt;Holy Order Castle is build.;;;;;;
+fo_holy.2003.a.tt.rename;[holy_order_castle_grandmaster.PrimaryTitle.GetName] will relocate their base of operations to the new castle.;;;;;;
+
+RENAME_LOCALE_HOLY_ORDER_CUSTOM_WARRIORS;Warriors of [order_barony.GetName];;;;;;
+RENAME_LOCALE_HOLY_ORDER_CUSTOM_WARRIORS_ADJ;[order_barony.GetAdjective];;;;;;
+RENAME_LOCALE_HOLY_ORDER_CUSTOM_KNIGHTS;Knights of [order_barony.County.GetName];;;;;;
+RENAME_LOCALE_HOLY_ORDER_CUSTOM_KNIGHTS_ADJ;[order_barony.GetAdjective];;;;;;
+
+donate_to_order;Donate to Holy Order;;;;;;
+donate_to_order_desc;Donate to your vassal Holy Order;;;;;;
+increase_size_of_order;Increase in Size;;;;;;
+increase_size_of_order_desc;Pay [Root.GetBestName] to increase the size of the [Root.PrimaryTitle.GetName].;;;;;;
+increase_size_of_order.tt;Increases in size by 15%.;;;;;;
+recently_donated_to_order;Recently Donated;;;;;;
+REASON_WEALTH;Got enough money already.;;;;;;
+
+## AI Stuff;;;;;;;
+fo_holy.50001.desc;[From.GetBestName] has increased the size of the [From.PrimaryTitle.GetName].;;;;;;
+fo_holy.50011.desc;[From.GetBestName] has collected donations.;;;;;;
+is_order_recently_increased_in_size;Recently Increased in Size;;;;;;
+is_order_recently_gained_donation;Recently Gained in Donation;;;;;;
+
+## Indpendence;;;;;;;
+grant_independence_holy_order;Grant Holy Order Independence;;;;;;
+grant_independence_holy_order_desc;Grant your vassalized Holy Order Independence;;;;;;
+grant_independence_holy_order_tt;Your vassalized Holy Order will become independent.;;;;;;
+fo_holy.7000.title;Granted Independence;;;;;;
+fo_holy.7000.desc;You decided it is best if [freed_holy_order.GetName] is granted independence. Having served your realm in the name of [Root.Religion.GetHighGodNameCap], they shall now be independent and help every [Root.Religion.GetName] ruler.;;;;;;
+fo_holy.7000.a;Let the enemies of [Root.Religion.GetFullName] tremble at the might of [freed_holy_order.GetName];;;;;;
+
+## Debug;;;;;;;
+fo_holy.1.title;Debug;;;;;;
+fo_holy.1.desc;Deactivate all Holy Order Titles;;;;;;
+fo_holy.1.a;Deactivate the Titles;;;;;;
+
+## Knightly Order;;;;;;;
+
+fo_knightly.1000.title;Found Knightly Order;;;;;;
+fo_knightly.1000.desc;desc TODO;;;;;;
+fo_knightly.1000.a;option TODO;;;;;;

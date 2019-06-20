@@ -1,0 +1,161 @@
+make_new_character_female_if_feminist = { # scope is new character
+  if = {
+    limit = {
+      OR = {
+        has_religion_feature = religion_equal
+        has_religion_feature = religion_feature_west_african
+        ROOT = { has_law = status_of_women_4 }
+      }
+    }
+    random = {
+      chance = 20
+      modifier = {
+        factor = 1.4
+        ROOT = { is_female = yes }
+      }
+      # Audax Validator "." Ignore_ALL
+      set_gender = female
+    }
+  }
+  if = {
+    limit = { has_religion_feature = religion_matriarchal }
+    # Audax Validator "." Ignore_ALL
+    set_gender = female
+  }
+}
+
+set_order_graphical_culture = {
+  if = {
+    limit = {
+      ROOT = {
+        religion_group = muslim
+      }
+    }
+    random_list = {
+      4 = {
+        # Audax Validator "." Ignore_ALL
+        set_graphical_culture = bektashigfx
+      }
+      1 = {
+        # Audax Validator "." Ignore_ALL
+        set_graphical_culture = immortalsgfx
+      }
+    }
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        religion_group = jewish_group
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = jewishholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = orthodox
+          religion = bogomilist
+          religion = monothelite
+          religion = iconoclast
+          religion = paulician
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = orthodoxholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = norse_pagan
+          religion = norse_pagan_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = norseholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = west_african_pagan
+          religion = west_african_pagan_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = westafricanholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = slavic_pagan
+          religion = slavic_pagan_reformed
+          ## they don't have their own
+          religion = tengri_pagan
+          religion = tengri_pagan_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = slavicholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = finnish_pagan
+          religion = finnish_pagan_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = finnishholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = baltic_pagan
+          religion = baltic_pagan_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = balticholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = aztec
+          religion = aztec_reformed
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = aztecholygfx
+  }
+  else_if = {
+    limit = {
+      ROOT = {
+        OR = {
+          religion = bon
+          religion = bon_reformed
+          religion_group = indian_group
+        }
+      }
+    }
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = aztecholygfx
+  }
+  else = {
+    # Audax Validator "." Ignore_ALL
+    set_graphical_culture = holygfx
+  }
+}
