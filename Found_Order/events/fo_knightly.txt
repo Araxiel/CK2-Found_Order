@@ -1,11 +1,12 @@
-namespace = fo_founding
+# Audax Validator "!" Ignore_ALL
+namespace = fo_knightly
 
-## fo_founding.1000   # Founding
+## fo_knightly.1000   # Found Knightly Order
 character_event  = {
-  id = fo_founding.1000
+  id = fo_knightly.1000
 
-  title = fo_founding.1000.title
-  desc = fo_founding.1000.desc
+  title = fo_knightly.1000.title
+  desc = fo_knightly.1000.desc
   picture = GFX_evt_diplomat_hf
 
   only_rulers = yes
@@ -13,7 +14,7 @@ character_event  = {
   is_triggered_only = yes
 
   option = {
-    name = fo_founding.1000.a
+    name = fo_knightly.1000.a
 
     ## create directly ; moving to event later
     custom_tooltip = {
@@ -26,10 +27,9 @@ character_event  = {
         custom_created = yes
         culture = Root
         holder = Root
-        base_title = capital_scope
+        #base_title = capital_scope
         short_name = yes
         copy_title_laws = yes
-        holy_order = yes
         mercenary = yes
         army_template = breton_band_composition
         siphons_income_to_creator = 0.1
@@ -73,7 +73,7 @@ character_event  = {
         age = 28
       }
       new_character = {
-        save_event_target_as = grandmaster_of_new_holy_order
+        #save_event_target_as = grandmaster_of_new_holy_order
         set_government_type = order_government
         add_trait = shrewd
         add_trait = zealous
@@ -95,7 +95,7 @@ character_event  = {
         set_defacto_liege = ROOT
 
         opinion = {
-          name = opinion_formed_order
+          modifier = opinion_formed_order
           who = ROOT
           years = 35
         }
@@ -124,5 +124,4 @@ character_event  = {
 
     }
   }
-
 }
